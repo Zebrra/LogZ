@@ -1,3 +1,6 @@
+#! /usr/bin/python3
+# -*- coding: UTF-8 -*-
+
 import discord
 from discord.ext import commands
 import json
