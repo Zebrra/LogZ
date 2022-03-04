@@ -22,7 +22,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     @commands.Cog.listener()
     async def on_member_join(self, member):
 
-        db = sqlite3.connect('../config/main.sqlite')
+        db = sqlite3.connect('config/main.sqlite')
         cursor = db.cursor()
         cursor.execute(f"SELECT channel_id FROM welcome WHERE guild_id = '{member.guild.id}'")
         result = cursor.fetchone()
@@ -58,7 +58,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     @commands.Cog.listener()
     async def on_member_remove(self, member):
 
-        db = sqlite3.connect('../config/main.sqlite')
+        db = sqlite3.connect('config/main.sqlite')
         cursor = db.cursor()
         cursor.execute(f"SELECT channel_id FROM leave WHERE guild_id = '{member.guild.id}'")
         result = cursor.fetchone()
@@ -102,7 +102,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     async def on_message_delete(self, message):
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_channel WHERE guild_id = '{message.guild.id}'")
             result = cursor.fetchone()
@@ -129,7 +129,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     async def on_message_edit(self, before, after):
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_channel WHERE guild_id = '{before.guild.id}'")
             result = cursor.fetchone()
@@ -160,7 +160,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     async def on_guild_channel_create(self, channel):
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_channel WHERE guild_id = '{channel.guild.id}'")
             result = cursor.fetchone()
@@ -215,7 +215,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     async def on_guild_channel_delete(self, channel):
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_channel WHERE guild_id = '{channel.guild.id}'")
             result = cursor.fetchone()
@@ -272,7 +272,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
 
         try:
 
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_channel WHERE guild_id = '{after.guild.id}'")
             result = cursor.fetchone()
@@ -343,7 +343,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
         # leave = before.channel.name
         # switch = before.channel.name => after.channel.name
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_channel WHERE guild_id = '{member.guild.id}'")
             result = cursor.fetchone()
@@ -399,7 +399,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     async def on_member_ban(self, guild, user):
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_admin WHERE guild_id = '{guild.id}'")
             result = cursor.fetchone()
@@ -437,7 +437,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     async def on_member_unban(self, guild, user):
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_admin WHERE guild_id = '{guild.id}'")
             result = cursor.fetchone()
@@ -473,7 +473,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     async def on_guild_role_create(self, role):
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_admin WHERE guild_id = '{role.guild.id}'")
             result = cursor.fetchone()
@@ -501,7 +501,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     async def on_guild_role_delete(self, role):
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_admin WHERE guild_id = '{role.guild.id}'")
             result = cursor.fetchone()
@@ -529,7 +529,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
     async def on_guild_role_update(self, before, after):
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_admin WHERE guild_id = '{after.guild.id}'")
             result = cursor.fetchone()
@@ -570,7 +570,7 @@ class EventCog(commands.Cog, name="LogsEvent"):
         # print(longer)
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
             cursor.execute(f"SELECT channel_id FROM setup_admin WHERE guild_id = '{after.guild.id}'")
             result = cursor.fetchone()
