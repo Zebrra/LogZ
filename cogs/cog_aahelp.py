@@ -71,7 +71,7 @@ class HelpCog(commands.Cog, name='Help'):
 
         """Liste l'ensemble des commandes du bot"""
 
-        with open("prefixes.json", "r") as f:
+        with open("../config/prefixes.json", "r") as f:
                 prefixes = json.load(f)
 
         pre = prefixes[str(ctx.guild.id)]
