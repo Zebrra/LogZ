@@ -3,10 +3,6 @@
 
 import discord
 from discord.ext import commands
-import asyncio
-import datetime
-import sys
-import traceback
 
 
 class ErrorCog(commands.Cog, name='Error'):
