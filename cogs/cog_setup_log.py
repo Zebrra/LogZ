@@ -28,7 +28,7 @@ class SetupCog(commands.Cog, name="CogSetupLog"):
     @welcome.command()
     async def channel(self, ctx, channel:discord.TextChannel):
         if ctx.message.author.guild_permissions.manage_messages:
-            db = sqlite3.connect('../config/main.sqlite')
+            db = sqlite3.connect('config/main.sqlite')
             cursor = db.cursor()
             cursor.execute(f"SELECT channel_id FROM welcome WHERE guild_id = '{ctx.guild.id}'")
             result = cursor.fetchone()
@@ -48,7 +48,7 @@ class SetupCog(commands.Cog, name="CogSetupLog"):
     @welcome.command()
     async def message(self, ctx, *, text):
         if ctx.message.author.guild_permissions.manage_messages:
-            db = sqlite3.connect('../config/main.sqlite')
+            db = sqlite3.connect('config/main.sqlite')
             cursor = db.cursor()
             cursor.execute(f"SELECT msg FROM welcome WHERE guild_id = '{ctx.guild.id}'")
             result = cursor.fetchone()
@@ -82,7 +82,7 @@ class SetupCog(commands.Cog, name="CogSetupLog"):
     @leave.command()
     async def log_channel(self, ctx, channel:discord.TextChannel):
         if ctx.message.author.guild_permissions.manage_messages:
-            db = sqlite3.connect('../config/main.sqlite')
+            db = sqlite3.connect('config/main.sqlite')
             cursor = db.cursor()
             cursor.execute(f"SELECT channel_id FROM leave WHERE guild_id = '{ctx.guild.id}'")
             result = cursor.fetchone()
@@ -102,7 +102,7 @@ class SetupCog(commands.Cog, name="CogSetupLog"):
     @leave.command()
     async def log_message(self, ctx, *, text):
         if ctx.message.author.guild_permissions.manage_messages:
-            db = sqlite3.connect('../config/main.sqlite')
+            db = sqlite3.connect('config/main.sqlite')
             cursor = db.cursor()
             cursor.execute(f"SELECT msg FROM leave WHERE guild_id = '{ctx.guild.id}'")
             result = cursor.fetchone()
@@ -128,7 +128,7 @@ class SetupCog(commands.Cog, name="CogSetupLog"):
         guild_id = ctx.guild.id
         guild = self.bot.get_guild(guild_id)
 
-        main = sqlite3.connect('../config/main.sqlite')
+        main = sqlite3.connect('config/main.sqlite')
         cursor = main.cursor()
         cursor.execute(f"SELECT channel_id, channel_name FROM setup_channel WHERE guild_id = '{ctx.guild.id}'")
         result = cursor.fetchone()
@@ -185,7 +185,7 @@ class SetupCog(commands.Cog, name="CogSetupLog"):
         guild_id = ctx.guild.id
         guild = self.bot.get_guild(guild_id)
 
-        main = sqlite3.connect('../config/main.sqlite')
+        main = sqlite3.connect('config/main.sqlite')
         cursor = main.cursor()
         cursor.execute(f"SELECT channel_id, channel_name, category_id FROM setup_admin WHERE guild_id = '{ctx.guild.id}'")
         result = cursor.fetchone()
@@ -240,7 +240,7 @@ class SetupCog(commands.Cog, name="CogSetupLog"):
         """Permet de supprimer les channel de logs et de vider la base de données.\n(a utiliser avec parcimonie\nPenser également a reset le terminal du bot pour ne pas le perdre dans une erreur d'event..)"""
 
         try:
-            main = sqlite3.connect('../config/main.sqlite')
+            main = sqlite3.connect('config/main.sqlite')
             cursor = main.cursor()
 
             admin_cursor = cursor.execute(f"SELECT channel_id, category_id FROM setup_admin WHERE guild_id = '{ctx.guild.id}'")
