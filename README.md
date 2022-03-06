@@ -1,8 +1,3 @@
-```diff
-- NUMBER_QUESTIONS
-
-```
-
 # LogZ
 ## Descriptif du bot.
 
