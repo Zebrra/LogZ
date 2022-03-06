@@ -1,5 +1,5 @@
 ```diff
-- NUMBER_QUESTIONS -
+- NUMBER_QUESTIONS
 
 ```
 
